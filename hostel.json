@@ -6,7 +6,6 @@ const bodyParser = require('body-parser');
 const { ObjectId } = require('mongodb'); // Import ObjectId
 const port = 3000;
 
-
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
@@ -42,42 +41,10 @@ const swaggerOptions = {
 
 };
 
-const swaggerJSDoc = require('swagger-jsdoc');
 
-// Define your options object first
-const options = {
-  definition: {
-    openapi: '3.0.0',
-    info: {
-      title: 'My API',
-      version: '1.0.0',
-      description: 'Description of my API',
-    },
-  },
-  apis: ['./routes/*.js'], // Specify the paths to your route files
-};
-const swaggerDocs = swaggerJSDoc(swaggerOptions);
 
-// Now, you can use the options object to generate the swaggerSpec
-const swaggerSpec = swaggerJSDoc(options);
+const swaggerDocs = swaggerJsdoc(swaggerOptions);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-
-
-const fs = require('fs');
-
-// Assuming 'swaggerSpec' contains your Swagger specification
-
-// Convert the Swagger specification to JSON or YAML format (choose one)
-const swaggerJson = JSON.stringify(swaggerSpec, null, 2); // For JSON
-// const swaggerYaml = require('js-yaml').dump(swaggerSpec, { lineWidth: -1 }); // For YAML
-
-// Specify the file path where you want to save the Swagger file
-const Desktop = 'my-api-spec.json'; // Change the file extension to '.yaml' for YAML
-
-// Write the Swagger specification to the file
-fs.writeFileSync(Desktop, swaggerJson); // Use 'swaggerYaml' for YAML
-
-console.log(`Swagger specification saved to ${Desktop}`);
 
 
 //middleware

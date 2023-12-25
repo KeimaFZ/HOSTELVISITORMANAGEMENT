@@ -9,8 +9,8 @@ Content-Type: application/json
 
 
 {
-    "username": "wani",
-    "password": 65432
+    "username": "alifah",
+    "password": 9999
 }
 
 ###
@@ -19,8 +19,8 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "username": "elsa",
-    "password": "1234"
+    "username": "alifah",
+    "password": 9999
 }
 
 ###
